@@ -11,41 +11,47 @@ public class Reserva {
     private Quarto quarto;
 
 
-    public Reserva(){
-        veiculos=new ArrayList<Veiculo>();
+    public Reserva() {
+        veiculos = new ArrayList<Veiculo>();
     }
-    public void addVeiculo(Veiculo veiculo){
+
+    public void addVeiculo(Veiculo veiculo) {
         veiculos.add(veiculo);
     }
-    public void removerVeiculo(Veiculo veiculo){
+
+    public void removerVeiculo(Veiculo veiculo) {
         veiculos.remove(veiculo);
     }
-    public void checkin(Hospede[] hospedes, Quarto quarto, String dataEntrada){
-        this.hospedes=hospedes;
-        this.dataEntrada=dataEntrada;
-        this.quarto=quarto;
-        for(Hospede hospede:hospedes){
+
+    public void checkin(Hospede[] hospedes, Quarto quarto, String dataEntrada) {
+        this.hospedes = hospedes;
+        this.dataEntrada = dataEntrada;
+        this.quarto = quarto;
+        for (Hospede hospede : hospedes) {
             hospede.addReserva(this);
         }
-        dataSaida="";
+        dataSaida = "";
         quarto.addReserva(this);
     }
-    public void checkOut(String dataSaida){
 
-        this.dataSaida=dataSaida;
+    public void checkOut(String dataSaida) {
+
+        this.dataSaida = dataSaida;
         quarto.retirarReserva(this);
-        for(Hospede hospede:hospedes){
+        for (Hospede hospede : hospedes) {
             hospede.removerReserva(this);
         }
     }
-    public void cancelar(){
-        for(Hospede hospede:hospedes){
+
+    public void cancelar() {
+        for (Hospede hospede : hospedes) {
             hospede.removerReserva(this);
-        }        hospedes=null;
-        dataEntrada="";
+        }
+        hospedes = null;
+        dataEntrada = "";
         quarto.retirarReserva(this);
-        quarto=null;
-        dataSaida="";
+        quarto = null;
+        dataSaida = "";
     }
 
     public String getDataSaida() {

@@ -1,13 +1,13 @@
 import java.util.Objects;
 
-public class Funcionario extends Pessoa{
+public class Funcionario extends Pessoa {
     private double salario;
     private Cargo cargo;
 
 
-    Funcionario(String nome,Cargo cargo){
+    Funcionario(String nome, Cargo cargo) {
         super(nome);
-        this.cargo=cargo;
+        this.cargo = cargo;
         cargo.addFuncionario(this);
     }
 
@@ -15,8 +15,9 @@ public class Funcionario extends Pessoa{
     public double getSalario() {
         return salario;
     }
-    public void mudarSalario(double salario){
-        this.salario=salario;
+
+    public void mudarSalario(double salario) {
+        this.salario = salario;
     }
 
     public Cargo getCargo() {
